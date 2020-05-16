@@ -10,10 +10,22 @@ let personalMovieDB = {
     privat: false
 };
 
-const a = prompt("Один из просмотренных фильмов?", ""),
-    b = prompt("На сколько оцените его?", ""),
-    c = prompt("Один из просмотренных фильмов?", ""),
-    d = prompt("На сколько оцените его?", "");
+for (let i = 1; i<=2; i++) {
+    let a = prompt("Один из просмотренных фильмов?", "");
+    let b = prompt("На сколько оцените его?", "");
+    while ((a == "") || (b == "") || (a == null) || (b == null) || (a.length>50)) {
+        a = prompt("Один из просмотренных фильмов?", "");
+        b = prompt("На сколько оцените его?", "");
+    }
+    personalMovieDB.movies[a] = b;    
+}
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+if (personalMovieDB.count < 10) {
+    alert("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count < 30) {
+    alert("Вы классический зритель");
+} else if (personalMovieDB.count >= 30) {
+    alert("Вы киноман");
+} else {
+    alert("Произошла ошибка");
+}   
